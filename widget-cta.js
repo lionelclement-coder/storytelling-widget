@@ -13,6 +13,7 @@
     const widgetContainer = document.createElement('div');
     widgetContainer.id = 'storytelling-widget-container';
     widgetContainer.className = 'storytelling-widget-container';
+    widgetContainer.style.cssText = 'position: relative !important; z-index: 999999 !important; isolation: isolate !important; contain: layout style !important;';
     
     // HTML du widget
     widgetContainer.innerHTML = `
@@ -109,6 +110,14 @@
             --widget-secondary: #CD212A;
             --widget-dark: #2C3E50;
             --widget-light: #FAFAFA;
+            position: relative !important;
+            z-index: 999999 !important;
+            isolation: isolate !important;
+            contain: layout style !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            float: none !important;
+            clear: none !important;
         }
         
         /* Widget Button Flottant */
@@ -130,6 +139,10 @@
             animation: pulse-widget 2s infinite !important;
             border: none !important;
             outline: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            float: none !important;
+            clear: none !important;
         }
         
         @keyframes pulse-widget {

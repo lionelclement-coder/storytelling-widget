@@ -621,11 +621,71 @@
         }
     `;
     
-    // Ajouter les styles au head
-    document.head.appendChild(widgetStyles);
+    // Ajouter les styles au head avec priorité maximale
+    widgetStyles.setAttribute('data-widget-styles', 'storytelling-cta');
+    document.head.insertBefore(widgetStyles, document.head.firstChild);
     
     // Ajouter le widget au body
     document.body.appendChild(widgetContainer);
+    
+    // Forcer les styles inline sur le bouton principal
+    setTimeout(() => {
+        const button = document.getElementById('widgetButton');
+        if (button) {
+            button.style.cssText = `
+                position: fixed !important;
+                bottom: 30px !important;
+                right: 30px !important;
+                width: 65px !important;
+                height: 65px !important;
+                background: linear-gradient(135deg, #008C45, #00A651) !important;
+                border-radius: 50% !important;
+                box-shadow: 0 5px 20px rgba(0, 140, 69, 0.4) !important;
+                cursor: pointer !important;
+                z-index: 999999 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                transition: all 0.3s ease !important;
+                animation: pulse-widget 2s infinite !important;
+                border: none !important;
+                outline: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                float: none !important;
+                clear: none !important;
+            `;
+        }
+    }, 100);
+    
+    // Forcer les styles inline sur le popup
+    setTimeout(() => {
+        const popup = document.getElementById('widgetPopup');
+        if (popup) {
+            popup.style.cssText = `
+                position: fixed !important;
+                bottom: 110px !important;
+                right: 30px !important;
+                width: 400px !important;
+                max-width: calc(100vw - 60px) !important;
+                max-height: 600px !important;
+                background: white !important;
+                border-radius: 20px !important;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+                z-index: 999997 !important;
+                opacity: 0 !important;
+                transform: translateY(20px) scale(0.95) !important;
+                transition: all 0.3s ease !important;
+                visibility: hidden !important;
+                overflow: hidden !important;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                float: none !important;
+                clear: none !important;
+            `;
+        }
+    }, 150);
     
     // Variables globales
     let isWidgetOpen = false;
